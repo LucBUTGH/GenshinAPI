@@ -11,13 +11,17 @@ use Illuminate\Routing\Controller as BaseController;
  *    title="Genshin API",
  *    version="1.0.0",
  * ),
- *   @OA\SecurityScheme(
+ *    @OA\SecurityScheme(
  *       securityScheme="bearerAuth",
  *       in="header",
  *       name="bearerAuth",
  *       type="http",
  *       scheme="bearer",
  *       bearerFormat="JWT",
+ *    ),
+ *    @OA\Servers(
+ *       url="http://localhost:8000/api/",
+ *       description="Serveur de développement",
  *    ),
  */
 class Controller extends BaseController
