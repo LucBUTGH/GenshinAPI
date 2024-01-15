@@ -20,19 +20,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Accueil tavu
+//Accueil API
 Route::get('/',[HomeController::class,'index']);
 
 
-//Les personnages
+//Personnages avec paramètres [Région, Type d'arme, Ascension, Rareté et Elément]
 Route::get('/characters',[CharactersController::class,'getCharactersByParams']);
 
-//Un personnage selon le nom
+//Personnage selon le nom
 Route::get('character/{name}',[CharactersController::class,'getCharacterByName']);
-
-//Personnages selon la région
-Route::get('character/{area}',[CharactersController::class,'getCharacterByArea']);
-
 
 
 
