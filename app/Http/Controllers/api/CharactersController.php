@@ -6,16 +6,74 @@ use App\Http\Controllers\Controller;
 use App\Models\CharacterModel;
 use Illuminate\Http\Request;
 
+
+
 class CharactersController extends Controller
 {
 
+    /**
+     * Get characters based on specified parameters.
+     *
+     * @OA\Get(
+     *     path="/api/characters",
+     *     summary="Get characters based on parameters",
+     *     tags={"Characters"},
+     *     @OA\Parameter(
+     *         name="area",
+     *         in="query",
+     *         description="The area of the character.",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="rarity",
+     *         in="query",
+     *         description="The rarity of the character.",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="weapon",
+     *         in="query",
+     *         description="The weapon type of the character.",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="element",
+     *         in="query",
+     *         description="The element of the character.",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="ascension",
+     *         in="query",
+     *         description="The ascension stat of the character.",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="List of characters filtered.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="message", type="string", example="Liste de personnages filtrée."),
+     *             @OA\Property(property="characters", type="array", @OA\Items(type="object")),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="No characters found with the provided parameters.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="message", type="string", example="No characters found with the provided parameters."),
+     *         )
+     *     )
+     * )
+     */
     
     public function getCharactersByParams(Request $request)
     {
-        // Récupérer tous les paramètres de la requête
+        // Getting params
         $params = $request->only(['area', 'rarity', 'weapon', 'element', 'ascension']);
 
-        // Correspondance entre les clés de paramètres et les colonnes de la base de données
+        // Mapping between parameter keys and database columns
         $columnMappings = [
             'area' => 'cha_region',
             'rarity' => 'cha_rarity',
@@ -24,7 +82,7 @@ class CharactersController extends Controller
             'ascension' => 'cha_ascension_stat',
         ];
 
-        // Construire la requête en fonction des paramètres fournis
+        // Building the query agreeing provided params
         $query = CharacterModel::query();
 
         foreach ($params as $key => $value) {
@@ -34,29 +92,70 @@ class CharactersController extends Controller
             }
         }
 
-        // Exécuter la requête
+        // Running the query
         $characters = $query->get();
 
+        if ($characters->isEmpty()) {
+            return response()->json([
+                "message" => "No characters found with the provided parameters.",
+            ], 404);
+        }
+
         return response()->json([
-            "message" => "Liste de personnages filtrée.",
+            "message" => "Characters filtered successfully.",
             "characters" => $characters,
         ], 200);
     }
 
 
-    //Get one character by segment
-    public function getCharacterByName($name){
-        $isCharacter = CharacterModel::where("cha_name",$name)->exists();
-        $character = CharacterModel::where("cha_name",$name)->get();
-        if($isCharacter){
+    /**
+     * Get a character by name.
+     *
+     * @OA\Get(
+     *     path="/api/character/{name}",
+     *     summary="Get a character by name",
+     *     tags={"Characters"},
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="path",
+     *         description="The name of the character.",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Character found.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="message", type="string", example="Character found."),
+     *             @OA\Property(property="character", type="object"),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="No character found with the provided name.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="message", type="string", example="No character found with the provided name."),
+     *         )
+     *     )
+     * )
+     */
+    public function getCharacterByName($name)
+    {
+        $isCharacter = CharacterModel::where("cha_name", $name)->exists();
+        $character = CharacterModel::where("cha_name", $name)->get();
+
+        if ($isCharacter) {
             return response()->json([
                 "message" => "Character found.",
                 "character" => $character,
-            ],200);
-        }else{
+            ], 200);
+        } else {
             return response()->json([
-                "message" => "Aucun personnage de nom " . $name . " trouvé",
-            ]);
+                "message" => "No character found with the provided name.",
+            ], 404);
         }
     }
+
 }

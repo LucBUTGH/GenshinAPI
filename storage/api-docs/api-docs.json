@@ -1,0 +1,170 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Genshin API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/characters": {
+            "get": {
+                "tags": [
+                    "Characters"
+                ],
+                "summary": "Get characters based on parameters",
+                "description": "Get characters based on specified parameters.",
+                "operationId": "fe9645e9336066f4ac20d5109b2bac7b",
+                "parameters": [
+                    {
+                        "name": "area",
+                        "in": "query",
+                        "description": "The area of the character.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "rarity",
+                        "in": "query",
+                        "description": "The rarity of the character.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "weapon",
+                        "in": "query",
+                        "description": "The weapon type of the character.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "element",
+                        "in": "query",
+                        "description": "The element of the character.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ascension",
+                        "in": "query",
+                        "description": "The ascension stat of the character.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of characters filtered.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Liste de personnages filtrée."
+                                        },
+                                        "characters": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No characters found with the provided parameters.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No characters found with the provided parameters."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/character/{name}": {
+            "get": {
+                "tags": [
+                    "Characters"
+                ],
+                "summary": "Get a character by name",
+                "description": "Get a character by name.",
+                "operationId": "ae162bed5089267ec653a55354d2fd0d",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "The name of the character.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Character found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Character found."
+                                        },
+                                        "character": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No character found with the provided name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No character found with the provided name."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
