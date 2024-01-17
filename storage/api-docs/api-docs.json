@@ -154,6 +154,140 @@
                     }
                 }
             }
+        },
+        "/api/weapons": {
+            "get": {
+                "tags": [
+                    "Weapons"
+                ],
+                "summary": "Get weapons based on parameters",
+                "description": "Get characters based on specified parameters.",
+                "operationId": "ab21959c64abd6925ea0fee48342bbb6",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "The type of the weapon.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "rarity",
+                        "in": "query",
+                        "description": "The rarity of the weapon.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ascension",
+                        "in": "query",
+                        "description": "The ascension of the weapon.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of weapons filtered.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "List of weapons filtered."
+                                        },
+                                        "weapons": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No weapons found with the provided parameters.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No weapons found with the provided parameters."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/weapon/{name}": {
+            "get": {
+                "tags": [
+                    "Weapons"
+                ],
+                "summary": "Get a weapon by name",
+                "description": "Get a weapon by name.",
+                "operationId": "c58e08b303cc1202078413f37fa0cf68",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "The name of the weapon.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Weapon found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Weapon found."
+                                        },
+                                        "weapon": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No weapon found with the provided name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No weapon found with the provided name."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {

@@ -10,7 +10,7 @@
     </div>
 
     <div class="ml-5 mr-5 border-8 border-color: white bg-black bg-opacity-50 rounded-lg p-4">
-
+        <iframe src="{{ route('docSwagger') }}" width="100%" height="600px"></iframe>
     </div>
 
     <!-- resources/views/welcome.blade.php -->

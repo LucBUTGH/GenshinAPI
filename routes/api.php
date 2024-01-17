@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\WeaponsController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,12 @@ Route::get('/characters',[CharactersController::class,'getCharactersByParams']);
 
 //Personnage selon le nom
 Route::get('character/{name}',[CharactersController::class,'getCharacterByName']);
+
+//Personnages avec paramètres [Région, Type d'arme, Ascension, Rareté et Elément]
+Route::get('/weapons',[WeaponsController::class,'getWeaponsByParams']);
+
+//Personnage selon le nom
+Route::get('weapon/{name}',[WeaponsController::class,'getWeaponByName']);
 
 
 

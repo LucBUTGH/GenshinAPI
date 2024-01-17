@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class ArtifactsController extends Controller
 {
-    //
+    function getArtifacts(Request $request){
+        
+    }
 }

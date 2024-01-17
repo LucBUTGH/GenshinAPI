@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 14 jan. 2024 à 17:52
+-- Généré le : mer. 17 jan. 2024 à 13:45
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.0.28
 
@@ -31,60 +31,61 @@ CREATE TABLE `gen_artifacts` (
   `art_id` int(11) NOT NULL,
   `art_name_set` text NOT NULL,
   `art_desc_2p` text NOT NULL,
-  `art_desc_4p` text NOT NULL
+  `art_desc_4p` text NOT NULL,
+  `stat` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `gen_artifacts`
 --
 
-INSERT INTO `gen_artifacts` (`art_id`, `art_name_set`, `art_desc_2p`, `art_desc_4p`) VALUES
-(1, 'Initiate', '', ''),
-(2, 'Adventurer', 'Max HP increased by 1,000.', 'Opening a chest regenerates 30% Max HP over 5s.'),
-(3, 'Lucky Dog', 'DEF increased by 100.', 'Picking up Mora restores 300 HP.'),
-(4, 'Traveling Doctor', 'Increases incoming healing by 20%.', 'Using Elemental Burst restores 20% HP.'),
-(5, 'Resolution of Sojourner', 'ATK +18%.', 'Increases Charged Attack CRIT Rate by 30%.'),
-(6, 'Tiny Miracle', 'All Elemental RES increased by 20%.', 'Incoming Elemental DMG increases corresponding Elemental RES by 30% for 10s. Can only occur once every 10s. '),
-(7, 'Berserker', 'CRIT Rate +12%', 'When HP is below 70%, CRIT Rate increases by an additional 24%. '),
-(8, 'Instructor', 'Increases Elemental Mastery by 80.', 'Upon triggering an Elemental Reaction, increases all party members\' Elemental Mastery by 120 for 8s.'),
-(9, 'The Exile', 'Energy Recharge +20%', 'Using an Elemental Burst regenerates 2 Energy for all party members (excluding the wearer) every 2s for 6s. This effect cannot stack.'),
-(10, 'Defender\'s Will', 'DEF +30%', 'For each different element present in your own party, the wearer\'s Elemental RES to that corresponding element is increased by 30%.'),
-(11, 'Brave Heart', 'ATK +18%.', 'Increases DMG by 30% against opponents with more than 50% HP.'),
-(12, 'Martial Artist', 'Normal and Charged Attack DMG +15%', 'After using Elemental Skill, increases Normal Attack and Charged Attack DMG by 25% for 8s. '),
-(13, 'Gambler', 'Increases Elemental Skill DMG by 20%.', 'Defeating an opponent has 100% chance to remove Elemental Skill CD. Can only occur once every 15s.'),
-(14, 'Scholar', 'Energy Recharge +20%', 'Gaining Elemental Particles or Orbs gives 3 Energy to all party members who have a bow or a catalyst equipped. Can only occur once every 3s.'),
-(15, 'Gladiator\'s Finale', 'ATK +18%.', 'If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%.'),
-(16, 'Wanderer\'s Troupe', 'Increases Elemental Mastery by 80.', 'Increases Charged Attack DMG by 35% if the character uses a Catalyst or Bow.'),
-(17, 'Noblesse Oblige', 'Elemental Burst DMG +20%', 'Using an Elemental Burst increases all party members\' ATK by 20% for 12s. This effect cannot stack.'),
-(18, 'Bloodstained Chivalry', 'Physical DMG Bonus +25%', 'After defeating an opponent, increases Charged Attack DMG by 50%, and reduces its Stamina cost to 0 for 10s. Also triggers with wild animals such as boars, squirrels and frogs.'),
-(19, 'Maiden Beloved', 'Character Healing Effectiveness +15%', 'Using an Elemental Skill or Burst increases healing received by all party members by 20% for 10s.'),
-(20, 'Viridescent Venerer', 'Anemo DMG Bonus +15%', 'Increases Swirl DMG by 60%. Decreases opponent\'s Elemental RES to the element infused in the Swirl by 40% for 10s.'),
-(21, 'Archaic Petra', 'Geo DMG Bonus +15%', 'Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain 35% DMG Bonus for that particular element for 10s. Only one form of Elemental DMG Bonus can be gained in this manner at any one time.'),
-(22, 'Retracing Bolide', 'Increases Shield Strength by 35%.', 'While protected by a shield, gain an additional 40% Normal and Charged Attack DMG.'),
-(23, 'Thundersoother', 'Electro RES increased by 40%.', 'Increases DMG against opponents affected by Electro by 35%.'),
-(24, 'Thundering Fury', 'Electro DMG Bonus +15%', 'Increases DMG caused by Overloaded, Electro-Charged, Superconduct, and Hyperbloom by 40%, and the DMG Bonus conferred by Aggravate is increased by 20%. When Quicken or the aforementioned Elemental Reactions are triggered, Elemental Skill CD is decreased by 1s. Can only occur once every 0.8s.'),
-(25, 'Lavawalker', 'Pyro RES increased by 40%.', 'Increases DMG against opponents affected by Pyro by 35%.'),
-(26, 'Crimson Witch of Flames', 'Pyro DMG Bonus +15%', 'Increases Overloaded and Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks'),
-(27, 'Blizzard Strayer', 'Cryo DMG Bonus +15%', 'When a character attacks an opponent affected by Cryo, their CRIT Rate is increased by 20%. If the opponent is Frozen, CRIT Rate is increased by an additional 20%.'),
-(28, 'Heart of Depth', 'Hydro DMG Bonus +15%', 'After using an Elemental Skill, increases Normal Attack and Charged Attack DMG by 30% for 15s.'),
-(29, 'Tenacity of the Millelith', 'HP +20%', 'When an Elemental Skill hits an opponent, the ATK of all nearby party members is increased by 20% and their Shield Strength is increased by 30% for 3s. This effect can be triggered once every 0.5s. This effect can still be triggered even when the character who is using this artifact set is not on the field.'),
-(30, 'Pale Flame', 'Physical DMG Bonus +25%', 'When an Elemental Skill hits an opponent, ATK is increased by 9% for 7s. This effect stacks up to 2 times and can be triggered once every 0.3s. Once 2 stacks are reached, the 2-set effect is increased by 100%.'),
-(31, 'Shimenawa\'s Reminiscence', 'ATK +18%', 'When casting an Elemental Skill, if the character has 15 or more Energy, they lose 15 Energy and Normal/Charged/Plunging Attack DMG is increased by 50% for 10s. This effect will not trigger again during that duration.'),
-(32, 'Emblem of Severed Fate', 'Energy Recharge +20%', 'Increases Elemental Burst DMG by 25% of Energy Recharge. A maximum of 75% bonus DMG can be obtained in this way.'),
-(33, 'Husk of Opulent Dreams', 'DEF +30%', ' A character equipped with this Artifact set will obtain the Curiosity effect in the following conditions:\r\nWhen on the field, the character gains 1 stack after hitting an opponent with a Geo attack, triggering a maximum of once every 0.3s. When off the field, the character gains 1 stack every 3s. Curiosity can stack up to 4 times, each providing 6% DEF and a 6% Geo DMG Bonus. When 6 seconds pass without gaining a Curiosity stack, 1 stack is lost.'),
-(34, 'Ocean-Hued Clam', 'Healing Bonus +15%.', 'When the character equipping this artifact set heals a character in the party, a Sea-Dyed Foam will appear for 3 seconds, accumulating the amount of HP recovered from healing (including overflow healing). At the end of the duration, the Sea-Dyed Foam will explode, dealing DMG to nearby opponents based on 90% of the accumulated healing. (This DMG is calculated similarly to Reactions such as Electro-Charged, and Superconduct, but it is not affected by Elemental Mastery, Character Levels, or Reaction DMG Bonuses). Only one Sea-Dyed Foam can be produced every 3.5 seconds. Each Sea-Dyed Foam can accumulate up to 30,000 HP (including overflow healing). There can be no more than one Sea-Dyed Foam active at any given time. This effect can still be triggered even when the character who is using this artifact set is not on the field.'),
-(35, 'Vermillion Hereafter', 'ATK +18%', 'After using an Elemental Burst. this character will gain the Nascent Light effect, increasing their ATK by 8% for 16s. When the character\'s HP decreases, their ATK will further increase by 10%. This increase can occur this way maximum of 4 times. This effect can be triggered once every 0.8s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.'),
-(36, 'Echoes of an Offering', 'ATK +18%', 'When Normal Attacks hit opponents, there is a 36% chance that it will trigger Valley Rite, which will increase Normal Attack DMG by 70% of ATK. This effect will be dispelled 0.05s after a Normal Attack deals DMG.\r\nIf a Normal Attack fails to trigger Valley Rite, the odds of it triggering the next time will increase by 20%.\r\nThis trigger can occur once every 0.2s.'),
-(37, 'Deepwood Memories', 'Dendro DMG Bonus +15%', 'After Elemental Skills or Bursts hit opponents, the targets\' Dendro RES will be decreased by 30% for 8s. This effect can be triggered even if the equipping character is not on the field.'),
-(38, 'Gilded Dreams', 'Increases Elemental Mastery by 80.', 'Within 8s of triggering an Elemental Reaction, the character equipping this will obtain buffs based on the Elemental Type of the other party members. ATK is increased by 14% for each party member whose Elemental Type is the same as the equipping character, and Elemental Mastery is increased by 50 for every party member with a different Elemental Type. Each of the aforementioned buffs will count up to 3 characters. This effect can be triggered once every 8s. The character who equips this can still trigger its effects when not on the field.'),
-(39, 'Desert Pavilion Chronicle', 'Anemo DMG Bonus +15%.', 'Charged Attacks hit opponents, the equipping character\'s Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for 15s.'),
-(40, 'Flower of Paradise Lost', 'Increases Elemental Mastery by 80.', 'The equipping character\'s Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%. Additionally, after the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another 25% bonus to the effect mentioned prior. Each stack of this lasts 10s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.'),
-(41, 'Nymph\'s Dream', 'Hydro DMG Bonus +15%', 'After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents, 1 stack of Mirrored Nymph will triggered, lasting 8s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/25%, and Hydro DMG will be increased by 4%/9%/15%. Mirrored Nymph created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.'),
-(42, 'Vourukasha\'s Glow', 'HP +20%', 'Elemental Skill and Elemental Burst DMG will be increased by 10%. After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for 5s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.'),
-(43, 'Marechaussee Hunter', 'Normal and Charged Attack DMG +15%.', 'When current HP increases or decreases, CRIT Rate will be increased by 12% for 5s. Max 3 stacks.'),
-(44, 'Golden Troupe', 'Increases Elemental Skill DMG by 20%', 'Increases Elemental Skill DMG by 25%. Additionally, when not on the field, Elemental Skill DMG will be further increased by 25%. This effect will be cleared 2s after taking the field.'),
-(45, 'Song of Days Past', 'Healing Bonus +15%', 'When the equipping character heals a party member, the Yearning effect will be created for 6s, which records the total amount of healing provided (including overflow healing). When the duration expires, the Yearning effect will be transformed into the \"Waves of Days Past\" effect: When your active party member hits an opponent with a Normal Attack, Charged Attack, Plunging Attack, Elemental Skill, or Elemental Burst, the DMG dealt will be increased by 8% of the total healing amount recorded by the Yearning effect. The \"Waves of Days Past\" effect is removed after it has taken effect 5 times or after 10s. A single instance of the Yearning effect can record up to 15,000 healing, and only a single instance can exist at once, but it can record the healing from multiple equipping characters. Equipping characters on standby can still trigger this effect.'),
-(46, 'Nighttime Whispers in the Echoing Woods', 'ATK +18%', 'After using an Elemental Skill, gain a 20% Geo DMG Bonus for 10s. While under a shield granted by the Crystallize reaction, the above effect will be increased by 150%, and this additional increase disappears 1s after that shield is lost.');
+INSERT INTO `gen_artifacts` (`art_id`, `art_name_set`, `art_desc_2p`, `art_desc_4p`, `stat`) VALUES
+(1, 'Initiate', '', '', NULL),
+(2, 'Adventurer', 'Max HP increased by 1,000.', 'Opening a chest regenerates 30% Max HP over 5s.', 'HP'),
+(3, 'Lucky Dog', 'DEF increased by 100.', 'Picking up Mora restores 300 HP.', 'DEF'),
+(4, 'Traveling Doctor', 'Increases incoming healing by 20%.', 'Using Elemental Burst restores 20% HP.', 'Heal'),
+(5, 'Resolution of Sojourner', 'ATK +18%.', 'Increases Charged Attack CRIT Rate by 30%.', 'ATK'),
+(6, 'Tiny Miracle', 'All Elemental RES increased by 20%.', 'Incoming Elemental DMG increases corresponding Elemental RES by 30% for 10s. Can only occur once every 10s. ', 'EM'),
+(7, 'Berserker', 'CRIT Rate +12%', 'When HP is below 70%, CRIT Rate increases by an additional 24%. ', NULL),
+(8, 'Instructor', 'Increases Elemental Mastery by 80.', 'Upon triggering an Elemental Reaction, increases all party members\' Elemental Mastery by 120 for 8s.', 'EM'),
+(9, 'The Exile', 'Energy Recharge +20%', 'Using an Elemental Burst regenerates 2 Energy for all party members (excluding the wearer) every 2s for 6s. This effect cannot stack.', 'ER'),
+(10, 'Defender\'s Will', 'DEF +30%', 'For each different element present in your own party, the wearer\'s Elemental RES to that corresponding element is increased by 30%.', 'DEF'),
+(11, 'Brave Heart', 'ATK +18%.', 'Increases DMG by 30% against opponents with more than 50% HP.', 'ATK'),
+(12, 'Martial Artist', 'Normal and Charged Attack DMG +15%', 'After using Elemental Skill, increases Normal Attack and Charged Attack DMG by 25% for 8s. ', NULL),
+(13, 'Gambler', 'Increases Elemental Skill DMG by 20%.', 'Defeating an opponent has 100% chance to remove Elemental Skill CD. Can only occur once every 15s.', 'Skill'),
+(14, 'Scholar', 'Energy Recharge +20%', 'Gaining Elemental Particles or Orbs gives 3 Energy to all party members who have a bow or a catalyst equipped. Can only occur once every 3s.', 'ER'),
+(15, 'Gladiator\'s Finale', 'ATK +18%.', 'If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%.', 'ATK'),
+(16, 'Wanderer\'s Troupe', 'Increases Elemental Mastery by 80.', 'Increases Charged Attack DMG by 35% if the character uses a Catalyst or Bow.', 'EM'),
+(17, 'Noblesse Oblige', 'Elemental Burst DMG +20%', 'Using an Elemental Burst increases all party members\' ATK by 20% for 12s. This effect cannot stack.', 'Burst'),
+(18, 'Bloodstained Chivalry', 'Physical DMG Bonus +25%', 'After defeating an opponent, increases Charged Attack DMG by 50%, and reduces its Stamina cost to 0 for 10s. Also triggers with wild animals such as boars, squirrels and frogs.', NULL),
+(19, 'Maiden Beloved', 'Character Healing Effectiveness +15%', 'Using an Elemental Skill or Burst increases healing received by all party members by 20% for 10s.', 'Heal'),
+(20, 'Viridescent Venerer', 'Anemo DMG Bonus +15%', 'Increases Swirl DMG by 60%. Decreases opponent\'s Elemental RES to the element infused in the Swirl by 40% for 10s.', NULL),
+(21, 'Archaic Petra', 'Geo DMG Bonus +15%', 'Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain 35% DMG Bonus for that particular element for 10s. Only one form of Elemental DMG Bonus can be gained in this manner at any one time.', NULL),
+(22, 'Retracing Bolide', 'Increases Shield Strength by 35%.', 'While protected by a shield, gain an additional 40% Normal and Charged Attack DMG.', NULL),
+(23, 'Thundersoother', 'Electro RES increased by 40%.', 'Increases DMG against opponents affected by Electro by 35%.', NULL),
+(24, 'Thundering Fury', 'Electro DMG Bonus +15%', 'Increases DMG caused by Overloaded, Electro-Charged, Superconduct, and Hyperbloom by 40%, and the DMG Bonus conferred by Aggravate is increased by 20%. When Quicken or the aforementioned Elemental Reactions are triggered, Elemental Skill CD is decreased by 1s. Can only occur once every 0.8s.', NULL),
+(25, 'Lavawalker', 'Pyro RES increased by 40%.', 'Increases DMG against opponents affected by Pyro by 35%.', NULL),
+(26, 'Crimson Witch of Flames', 'Pyro DMG Bonus +15%', 'Increases Overloaded and Burning, and Burgeon DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using Elemental Skill increases the 2-Piece Set Bonus by 50% of its starting value for 10s. Max 3 stacks', NULL),
+(27, 'Blizzard Strayer', 'Cryo DMG Bonus +15%', 'When a character attacks an opponent affected by Cryo, their CRIT Rate is increased by 20%. If the opponent is Frozen, CRIT Rate is increased by an additional 20%.', NULL),
+(28, 'Heart of Depth', 'Hydro DMG Bonus +15%', 'After using an Elemental Skill, increases Normal Attack and Charged Attack DMG by 30% for 15s.', NULL),
+(29, 'Tenacity of the Millelith', 'HP +20%', 'When an Elemental Skill hits an opponent, the ATK of all nearby party members is increased by 20% and their Shield Strength is increased by 30% for 3s. This effect can be triggered once every 0.5s. This effect can still be triggered even when the character who is using this artifact set is not on the field.', 'HP'),
+(30, 'Pale Flame', 'Physical DMG Bonus +25%', 'When an Elemental Skill hits an opponent, ATK is increased by 9% for 7s. This effect stacks up to 2 times and can be triggered once every 0.3s. Once 2 stacks are reached, the 2-set effect is increased by 100%.', NULL),
+(31, 'Shimenawa\'s Reminiscence', 'ATK +18%', 'When casting an Elemental Skill, if the character has 15 or more Energy, they lose 15 Energy and Normal/Charged/Plunging Attack DMG is increased by 50% for 10s. This effect will not trigger again during that duration.', 'ATK'),
+(32, 'Emblem of Severed Fate', 'Energy Recharge +20%', 'Increases Elemental Burst DMG by 25% of Energy Recharge. A maximum of 75% bonus DMG can be obtained in this way.', 'ER'),
+(33, 'Husk of Opulent Dreams', 'DEF +30%', ' A character equipped with this Artifact set will obtain the Curiosity effect in the following conditions:\r\nWhen on the field, the character gains 1 stack after hitting an opponent with a Geo attack, triggering a maximum of once every 0.3s. When off the field, the character gains 1 stack every 3s. Curiosity can stack up to 4 times, each providing 6% DEF and a 6% Geo DMG Bonus. When 6 seconds pass without gaining a Curiosity stack, 1 stack is lost.', 'DEF'),
+(34, 'Ocean-Hued Clam', 'Healing Bonus +15%.', 'When the character equipping this artifact set heals a character in the party, a Sea-Dyed Foam will appear for 3 seconds, accumulating the amount of HP recovered from healing (including overflow healing). At the end of the duration, the Sea-Dyed Foam will explode, dealing DMG to nearby opponents based on 90% of the accumulated healing. (This DMG is calculated similarly to Reactions such as Electro-Charged, and Superconduct, but it is not affected by Elemental Mastery, Character Levels, or Reaction DMG Bonuses). Only one Sea-Dyed Foam can be produced every 3.5 seconds. Each Sea-Dyed Foam can accumulate up to 30,000 HP (including overflow healing). There can be no more than one Sea-Dyed Foam active at any given time. This effect can still be triggered even when the character who is using this artifact set is not on the field.', 'Heal'),
+(35, 'Vermillion Hereafter', 'ATK +18%', 'After using an Elemental Burst. this character will gain the Nascent Light effect, increasing their ATK by 8% for 16s. When the character\'s HP decreases, their ATK will further increase by 10%. This increase can occur this way maximum of 4 times. This effect can be triggered once every 0.8s. Nascent Light will be dispelled when the character leaves the field. If an Elemental Burst is used again during the duration of Nascent Light, the original Nascent Light will be dispelled.', 'ATK'),
+(36, 'Echoes of an Offering', 'ATK +18%', 'When Normal Attacks hit opponents, there is a 36% chance that it will trigger Valley Rite, which will increase Normal Attack DMG by 70% of ATK. This effect will be dispelled 0.05s after a Normal Attack deals DMG.\r\nIf a Normal Attack fails to trigger Valley Rite, the odds of it triggering the next time will increase by 20%.\r\nThis trigger can occur once every 0.2s.', 'ATK'),
+(37, 'Deepwood Memories', 'Dendro DMG Bonus +15%', 'After Elemental Skills or Bursts hit opponents, the targets\' Dendro RES will be decreased by 30% for 8s. This effect can be triggered even if the equipping character is not on the field.', NULL),
+(38, 'Gilded Dreams', 'Increases Elemental Mastery by 80.', 'Within 8s of triggering an Elemental Reaction, the character equipping this will obtain buffs based on the Elemental Type of the other party members. ATK is increased by 14% for each party member whose Elemental Type is the same as the equipping character, and Elemental Mastery is increased by 50 for every party member with a different Elemental Type. Each of the aforementioned buffs will count up to 3 characters. This effect can be triggered once every 8s. The character who equips this can still trigger its effects when not on the field.', 'EM'),
+(39, 'Desert Pavilion Chronicle', 'Anemo DMG Bonus +15%.', 'Charged Attacks hit opponents, the equipping character\'s Normal Attack SPD will increase by 10% while Normal, Charged, and Plunging Attack DMG will increase by 40% for 15s.', NULL),
+(40, 'Flower of Paradise Lost', 'Increases Elemental Mastery by 80.', 'The equipping character\'s Bloom, Hyperbloom, and Burgeon reaction DMG are increased by 40%. Additionally, after the equipping character triggers Bloom, Hyperbloom, or Burgeon, they will gain another 25% bonus to the effect mentioned prior. Each stack of this lasts 10s. Max 4 stacks simultaneously. This effect can only be triggered once per second. The character who equips this can still trigger its effects when not on the field.', 'EM'),
+(41, 'Nymph\'s Dream', 'Hydro DMG Bonus +15%', 'After Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts hit opponents, 1 stack of Mirrored Nymph will triggered, lasting 8s. When under the effect of 1, 2, or 3 or more Mirrored Nymph stacks, ATK will be increased by 7%/16%/25%, and Hydro DMG will be increased by 4%/9%/15%. Mirrored Nymph created by Normal, Charged, and Plunging Attacks, Elemental Skills, and Elemental Bursts exist independently.', NULL),
+(42, 'Vourukasha\'s Glow', 'HP +20%', 'Elemental Skill and Elemental Burst DMG will be increased by 10%. After the equipping character takes DMG, the aforementioned DMG Bonus is increased by 80% for 5s. This effect increase can have 5 stacks. The duration of each stack is counted independently. These effects can be triggered even when the equipping character is not on the field.', 'HP'),
+(43, 'Marechaussee Hunter', 'Normal and Charged Attack DMG +15%.', 'When current HP increases or decreases, CRIT Rate will be increased by 12% for 5s. Max 3 stacks.', NULL),
+(44, 'Golden Troupe', 'Increases Elemental Skill DMG by 20%', 'Increases Elemental Skill DMG by 25%. Additionally, when not on the field, Elemental Skill DMG will be further increased by 25%. This effect will be cleared 2s after taking the field.', 'Skill'),
+(45, 'Song of Days Past', 'Healing Bonus +15%', 'When the equipping character heals a party member, the Yearning effect will be created for 6s, which records the total amount of healing provided (including overflow healing). When the duration expires, the Yearning effect will be transformed into the \"Waves of Days Past\" effect: When your active party member hits an opponent with a Normal Attack, Charged Attack, Plunging Attack, Elemental Skill, or Elemental Burst, the DMG dealt will be increased by 8% of the total healing amount recorded by the Yearning effect. The \"Waves of Days Past\" effect is removed after it has taken effect 5 times or after 10s. A single instance of the Yearning effect can record up to 15,000 healing, and only a single instance can exist at once, but it can record the healing from multiple equipping characters. Equipping characters on standby can still trigger this effect.', 'Heal'),
+(46, 'Nighttime Whispers in the Echoing Woods', 'ATK +18%', 'After using an Elemental Skill, gain a 20% Geo DMG Bonus for 10s. While under a shield granted by the Crystallize reaction, the above effect will be increased by 150%, and this additional increase disappears 1s after that shield is lost.', 'ATK');
 
 --
 -- Déclencheurs `gen_artifacts`
@@ -345,7 +346,7 @@ INSERT INTO `gen_weapons` (`wea_id`, `wea_name`, `wea_weapon_type`, `wea_rarity`
 (8, 'Aqua Simulacra', 'Bow', '5_star', 'CRIT DMG'),
 (9, 'Aquila Favonia', 'Sword', '5_star', 'Physical DMG Bonus'),
 (10, 'Ballad of the Fjords', 'Polearm', '4_star', 'CRIT Rate'),
-(11, 'Beacon of the Reed Sea', 'Claymore', '5_star', 'CRIT Rate'),
+(11, 'Beacon of the Red Sea', 'Claymore', '5_star', 'CRIT Rate'),
 (12, 'Beginner\'s Protector', 'Polearm', '1_star', ''),
 (13, 'Black Tassel', 'Polearm', '3_star', 'HP'),
 (14, 'Blackcliff Agate', 'Catalyst', '4_star', 'CRIT DMG'),
@@ -507,6 +508,7 @@ INSERT INTO `gen_weapons` (`wea_id`, `wea_name`, `wea_weapon_type`, `wea_rarity`
 (174, 'Balad of the Boundless Blue', 'Catalyst', '4_star', 'Energy Recharge'),
 (175, 'The Unforged', 'Claymore', '5_star', 'ATK'),
 (176, 'Verdict', 'Claymore', '5_star', 'CRIT Rate');
+
 --
 -- Index pour les tables déchargées
 --
@@ -536,9 +538,6 @@ ALTER TABLE `gen_characters`
 ALTER TABLE `gen_weapons`
   ADD PRIMARY KEY (`wea_id`);
 
-ALTER TABLE `gen_weapons`
-  MODIFY `wea_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
@@ -556,17 +555,16 @@ ALTER TABLE `gen_art_rarities`
   MODIFY `art_rar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
--- AUTO_INCREMENT pour la table `gen_weapons`
---
-ALTER TABLE `gen_weapons`
-  MODIFY `wea_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
-
---
 -- AUTO_INCREMENT pour la table `gen_characters`
 --
 ALTER TABLE `gen_characters`
   MODIFY `cha_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
+--
+-- AUTO_INCREMENT pour la table `gen_weapons`
+--
+ALTER TABLE `gen_weapons`
+  MODIFY `wea_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- Contraintes pour les tables déchargées

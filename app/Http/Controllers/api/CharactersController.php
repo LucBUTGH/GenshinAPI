@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\CharacterModel;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 
@@ -70,41 +71,50 @@ class CharactersController extends Controller
     
     public function getCharactersByParams(Request $request)
     {
-        // Getting params
-        $params = $request->only(['area', 'rarity', 'weapon', 'element', 'ascension']);
+        try{
+            // Getting params
+            $params = $request->only(['area', 'rarity', 'weapon', 'element', 'ascension']);
 
-        // Mapping between parameter keys and database columns
-        $columnMappings = [
-            'area' => 'cha_region',
-            'rarity' => 'cha_rarity',
-            'weapon' => 'cha_weapon_type',
-            'element' => 'cha_element',
-            'ascension' => 'cha_ascension_stat',
-        ];
+            // Mapping between parameter keys and database columns
+            $columnMappings = [
+                'area' => 'cha_region',
+                'rarity' => 'cha_rarity',
+                'weapon' => 'cha_weapon_type',
+                'element' => 'cha_element',
+                'ascension' => 'cha_ascension_stat',
+            ];
 
-        // Building the query agreeing provided params
-        $query = CharacterModel::query();
+            // Building the query agreeing provided params
+            $query = CharacterModel::query();
 
-        foreach ($params as $key => $value) {
-            if ($value && isset($columnMappings[$key])) {
-                $column = $columnMappings[$key];
-                $query->where($column, $value);
+            foreach ($params as $key => $value) {
+                if ($value && isset($columnMappings[$key])) {
+                    $column = $columnMappings[$key];
+                    $query->where($column, $value);
+                }
             }
-        }
 
-        // Running the query
-        $characters = $query->get();
+            // Running the query
+            $characters = $query->get();
 
-        if ($characters->isEmpty()) {
+            if ($characters->isEmpty()) {
+                return response()->json([
+                    "message" => "No characters found with the provided parameters.",
+                ], 404);
+            }
+
             return response()->json([
-                "message" => "No characters found with the provided parameters.",
-            ], 404);
-        }
+                "message" => "Characters filtered successfully.",
+                "characters" => $characters,
+            ], 200);
 
-        return response()->json([
-            "message" => "Characters filtered successfully.",
-            "characters" => $characters,
-        ], 200);
+        //Exception if unable to log into database
+        }catch(QueryException){
+            return response()->json([
+                "message" => "Database not connected",
+            ]);
+        }
+        
     }
 
 
@@ -143,19 +153,27 @@ class CharactersController extends Controller
      */
     public function getCharacterByName($name)
     {
-        $isCharacter = CharacterModel::where("cha_name", $name)->exists();
-        $character = CharacterModel::where("cha_name", $name)->get();
 
-        if ($isCharacter) {
+        try{
+            $isCharacter = CharacterModel::where("cha_name", $name)->exists();
+            $character = CharacterModel::where("cha_name", $name)->get();
+    
+            if ($isCharacter) {
+                return response()->json([
+                    "message" => "Character found.",
+                    "character" => $character,
+                ], 200);
+            } else {
+                return response()->json([
+                    "message" => "$name doesn't exist.",
+                ], 404);
+            }   
+        }catch(QueryException){
             return response()->json([
-                "message" => "Character found.",
-                "character" => $character,
-            ], 200);
-        } else {
-            return response()->json([
-                "message" => "No character found with the provided name.",
+                "message" => "Database not connected.",
             ], 404);
         }
+        
     }
 
 }
