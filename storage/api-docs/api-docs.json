@@ -5,6 +5,124 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/artifacts": {
+            "get": {
+                "tags": [
+                    "Artifacts"
+                ],
+                "summary": "Get characters based on parameters",
+                "description": "Get characters based on specified parameters.",
+                "operationId": "80643be7a3a6fe5c71851277acfd7cf4",
+                "parameters": [
+                    {
+                        "name": "stat",
+                        "in": "query",
+                        "description": "The stat of the set artifacts.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of artifacts filtered.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "List of artifacts filtered."
+                                        },
+                                        "artifacts": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No artifacts found with the provided parameters.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No artifacts found with the provided parameters."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/artifact/{name}": {
+            "get": {
+                "tags": [
+                    "Artifacts"
+                ],
+                "summary": "Get an artifact by name",
+                "description": "Get a artifact by name.",
+                "operationId": "46a54d2f28caab164f4deb9bb02da31f",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "The name of the artifact.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Artifact found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Artifact found."
+                                        },
+                                        "artifact": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No artifact found with the provided name.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No artifact found with the provided name."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/characters": {
             "get": {
                 "tags": [

@@ -109,9 +109,11 @@ class CharactersController extends Controller
             ], 200);
 
         //Exception if unable to log into database
-        }catch(QueryException){
+        }catch(QueryException $e){
             return response()->json([
                 "message" => "Database not connected",
+                "error" => $e->getMessage(), 
+
             ]);
         }
         
@@ -168,9 +170,10 @@ class CharactersController extends Controller
                     "message" => "$name doesn't exist.",
                 ], 404);
             }   
-        }catch(QueryException){
+        }catch(QueryException $e){
             return response()->json([
                 "message" => "Database not connected.",
+                "error" => $e->getMessage(),
             ], 404);
         }
         

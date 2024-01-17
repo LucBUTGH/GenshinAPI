@@ -98,6 +98,7 @@ class WeaponsController extends Controller
         }catch(QueryException){
             return response()->json([
                 "message" => "Database not connected",
+                "error" => $e->getMessage(), 
             ]);
         }
         
@@ -157,6 +158,7 @@ class WeaponsController extends Controller
         }catch(QueryException){
             return response()->json([
                 "message" => "Database not connected.",
+                "error" => $e->getMessage(), 
             ], 404);
         }
         

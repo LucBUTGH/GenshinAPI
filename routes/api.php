@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\api\CharactersController;
 use App\Http\Controllers\api\WeaponsController;
+use App\Http\Controllers\api\ArtifactsController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\api\CharactersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +30,16 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/characters',[CharactersController::class,'getCharactersByParams']);
 
 //Personnage selon le nom
-Route::get('character/{name}',[CharactersController::class,'getCharacterByName']);
+Route::get('/character/{name}',[CharactersController::class,'getCharacterByName']);
 
-//Personnages avec paramètres [Région, Type d'arme, Ascension, Rareté et Elément]
+//Armes avec paramètres [Type d'arme, Ascension, Rareté]
 Route::get('/weapons',[WeaponsController::class,'getWeaponsByParams']);
 
-//Personnage selon le nom
-Route::get('weapon/{name}',[WeaponsController::class,'getWeaponByName']);
+//Arme selon le nom
+Route::get('/weapon/{name}',[WeaponsController::class,'getWeaponByName']);
 
+//Artéfacts avec paramètres [Stat]
+Route::get('/artifacts',[ArtifactsController::class,'getArtifactsByStat']);
 
-
+//Artéfacts selon le nom
+Route::get('/artifact/{name}',[ArtifactsController::class,'getArtifactByName']);
