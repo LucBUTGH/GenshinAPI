@@ -1,6 +1,6 @@
+<x-header/>
 <head>
     <meta charset="UTF-8">
-    <title>L5 Swagger UI</title>
     <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/docs/asset/swagger-ui.css?v=3fb53292764c7c9a0ee0928832bfbe54">
     <link rel="icon" type="image/png" href="http://127.0.0.1:8000/docs/asset/favicon-32x32.png?v=40d4f2c38d1cd854ad463f16373cbcb6" sizes="32x32">
     <link rel="icon" type="image/png" href="http://127.0.0.1:8000/docs/asset/favicon-16x16.png?v=f0ae831196d55d8f4115b6c5e8ec5384" sizes="16x16">
@@ -11,6 +11,10 @@
         overflow: -moz-scrollbars-vertical;
         overflow-y: scroll;
     }
+
+    .topbar-wrapper {
+            display: none !important;
+        }
     *,
     *:before,
     *:after
@@ -70,3 +74,4 @@
 
 
 </body>
+<x-footer/>

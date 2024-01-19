@@ -17,9 +17,9 @@
             
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="#" class="hover:text-gray-300">Accueil</a></li>
+                    <li><a href="{{route('home')}}" class="hover:text-gray-300">Accueil</a></li>
                     <li><a href="#" class="hover:text-gray-300">À propos</a></li>
-                    <li><a href="#" class="hover:text-gray-300">Documentation</a></li>
+                    <li><a href="{{ route('docSwagger') }}" class="hover:text-gray-300">Documentation</a></li>
                     <li><a href="#" class="hover:text-gray-300">Contact</a></li>
                 </ul>
             </nav>

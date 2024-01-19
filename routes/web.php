@@ -16,6 +16,6 @@ use App\Http\Controllers\SwaggerController;
 
 Route::get('/', function () {
     return view('homepage');
-});
+})->name('home');
 
-Route::get('/doc',[SwaggerController::class,'index'])->name('docSwagger');
+Route::get('/swagger',[SwaggerController::class,'index'])->name('docSwagger');
