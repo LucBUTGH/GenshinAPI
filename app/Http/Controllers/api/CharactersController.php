@@ -179,4 +179,6 @@ class CharactersController extends Controller
         
     }
 
+    
+
 }

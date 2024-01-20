@@ -17,10 +17,19 @@
             
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="{{route('home')}}" class="hover:text-gray-300">Accueil</a></li>
-                    <li><a href="#" class="hover:text-gray-300">À propos</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Accueil</a>
+                    </li>
+                    @if(session()->has('user'))
+                        <li><a href="#" class="hover:text-gray-300">{{session('user')->US_USERNAME}}</a></li>
+                    @else
+                        <li><a href="{{route('register')}}" class="hover:text-gray-300">Se connecter</a></li>
+                    
+                    @endif
                     <li><a href="{{ route('docSwagger') }}" class="hover:text-gray-300">Documentation</a></li>
                     <li><a href="#" class="hover:text-gray-300">Contact</a></li>
+                    @if(session()->has('user'))
+                    <li><a href="{{route('logout')}}" class="hover:text-gray-300">Déconnexion</a></li>
+                    @endif
                 </ul>
             </nav>
         </div>
