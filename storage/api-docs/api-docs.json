@@ -4,6 +4,12 @@
         "title": "Genshin API",
         "version": "1.0.0"
     },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/",
+            "description": "Serveur de développement"
+        }
+    ],
     "paths": {
         "/api/artifacts": {
             "get": {
@@ -405,17 +411,6 @@
                         }
                     }
                 }
-            }
-        }
-    },
-    "components": {
-        "securitySchemes": {
-            "bearerAuth": {
-                "type": "http",
-                "name": "bearerAuth",
-                "in": "header",
-                "bearerFormat": "JWT",
-                "scheme": "bearer"
             }
         }
     }
