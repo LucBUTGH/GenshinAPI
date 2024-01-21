@@ -44,20 +44,15 @@ class AuthController extends Controller
                 ->first();
 
     if ($user) {
-        // Utilisez le bon nom de colonne selon le nom exact dans votre base de données
         $password = $user->US_PASSWORD;
     } else {
         return redirect()->route('login')->with('error', 'Email incorrect.');
     }
 
     if ($password && Hash::check($request->input('password'), $password)) {
-        // Les informations d'identification sont correctes, effectuez les actions nécessaires ici
-        // Par exemple, vous pourriez créer une session d'utilisateur authentifiée, rediriger l'utilisateur, etc.
         session(['user' => $user]);
         return view('homepage');
     } else {
-        // Les informations d'identification ne sont pas correctes
-        // Retourner un message d'erreur, rediriger, etc.
         return redirect()->route('login')->with('error', 'Mot de passe incorrect.');
     }
 }
