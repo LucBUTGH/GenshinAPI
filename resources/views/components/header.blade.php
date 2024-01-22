@@ -22,22 +22,22 @@
                     </li>                          
                     @if(session()->has('user'))
                     <li>
-                        <a href="#" class="hover:text-gray-300">{{session('user')->US_USERNAME}}</a>
+                        <a href="#">{{session('user')->US_USERNAME}}</a>
                     </li>
                     @else
                     <li>
-                        <a href="{{route('register')}}" class="hover:text-gray-300">Se connecter</a>
+                        <a href="{{route('register')}}">Se connecter</a>
                     </li>
                     @endif
                     <li>
-                        <a href="{{ route('docSwagger') }}" class="hover:text-gray-300">Documentation</a>
+                        <a href="{{ route('docSwagger') }}">Documentation</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:text-gray-300">Contact</a>
+                        <a href="#">Contact</a>
                     </li>
                     @if(session()->has('user'))
                     <li>
-                        <a href="{{route('logout')}}" class="hover:text-gray-300">Déconnexion</a>
+                        <a href="{{route('logout')}}">Déconnexion</a>
                     </li>
                     @endif
                 </ul>
