@@ -46,15 +46,16 @@
     </header>
 
     <style>
+        
         html, body {
             height: 100%;
         }
-    
+
         body {
             display: flex;
             flex-direction: column;
         }
-    
+
         main {
             flex: 1;
         }
@@ -64,30 +65,25 @@
             position: relative;
         }
 
-        nav a:hover::after {
+        nav a::after {
             content: "";
             position: absolute;
-            left: 0;
-            bottom: -2px; /* Ajouté */
+            left: 100%;
+            bottom: -2px;
             width: 0;
             height: 1px;
             background: white;
-            transition: width 1s ease; 
+            transition: left 0.2s ease, width 0.2s ease; 
         }
 
         nav a:hover::after {
+            left: 0;
             width: 100%;
-            animation: underline 0.5s ease;
         }
 
-            @keyframes underline {
-            0% {
-                width: 0; 
-            }
-            
-            100% {
-                width: 100%;
-            }
+        nav a:not(:hover)::after {
+            left: 0; 
+            width: 0;
         }
 
     </style>
