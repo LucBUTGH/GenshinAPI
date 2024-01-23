@@ -30,16 +30,22 @@
             <label for="password" class="block text-sm font-medium text-gray-600">Mot de passe :</label>
             <input type="password" name="password" required class="mt-1 p-2 w-full border rounded-md">
 
-            <!-- Ajoutez des classes similaires pour d'autres champs -->
+            <label for="c_password" class="block text-sm font-medium text-gray-600">Confirmer mot de passe :</label>
+            <input type="password" name="c_password" required class="mt-1 p-2 w-full border rounded-md">
 
             <input type="submit" value="Se connecter" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
-
             <p class="mt-4">Déjà un compte ? <a href="{{route('login')}}" class="text-blue-500">Se connecter</a></p>
+
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
         </form>
 
-        @if(session('error'))
+        @if(session('mdp'))
             <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-md">
-                {{ session('error') }}
+                {{ session('mdp') }}
             </div>
         @endif
     </div>

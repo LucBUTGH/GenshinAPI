@@ -16,7 +16,7 @@
         <form action="{{ route('loginprocess') }}" method="post" class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
             @csrf
             <label for="email" class="block text-sm font-medium text-gray-600">Email ou nom d'utilisateur :</label>
-            <input type="email" name="email" required class="mt-1 p-2 w-full border rounded-md">
+            <input type="text" name="email" required class="mt-1 p-2 w-full border rounded-md">
 
             <label for="password" class="block text-sm font-medium text-gray-600">Mot de passe :</label>
             <input type="password" name="password" required class="mt-1 p-2 w-full border rounded-md">

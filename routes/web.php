@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SwaggerController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CharactersController;
 
 
 /*
@@ -17,15 +18,10 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-})->name('homepage');
-
-Route::get('/', [HomeController::class, 'home'])->name('home');
 
 
+Route::get('/', [HomeController::class, 'getAllCharacters'])->name('homepage');
 Route::get('/swagger',[SwaggerController::class,'index'])->name('docSwagger');
-
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'insert'])->name('registerprocess');
 Route::get('/login', [AuthController::class, 'login'])->name('login');
