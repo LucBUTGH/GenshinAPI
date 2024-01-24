@@ -18,6 +18,16 @@ class HomeController extends Controller
         $auth = new AuthController();
         $auth->redirectHome();
     }
+
+    function pageCharacters(){
+        $characters = CharacterModel::get();
+        return view('characters', ['characters' => $characters]);
+    }
+
+    function pageOnlyCharacter($name){
+        $character = CharacterModel::where('cha_name',$name)->first();
+        return view('character',['character' => $character]);
+    }
 }
 
 
