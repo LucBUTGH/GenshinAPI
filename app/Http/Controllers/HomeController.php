@@ -28,6 +28,10 @@ class HomeController extends Controller
         $character = CharacterModel::where('cha_name',$name)->first();
         return view('character',['character' => $character]);
     }
+
+    function contact(){
+        return view('contact');
+    }
 }
 
 

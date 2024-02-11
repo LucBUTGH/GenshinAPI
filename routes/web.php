@@ -29,6 +29,7 @@ Route::post('/login', [AuthController::class, 'verif'])->name('loginprocess');
 Route::get('/', [AuthController::class, 'logout'])->name('logout');
 Route::get('/characters',[HomeController::class,'pageCharacters'])->name('characters');
 Route::get('/character/{name}',[HomeController::class,'pageOnlyCharacter'])->name('character');
+Route::get('/contact', [HomeController::class,'contact'])->name('contact');
 
 
 
