@@ -14,16 +14,20 @@
 
     <div class="container mx-auto mt-8">
         <form action="{{ route('loginprocess') }}" method="post" class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
-            <h1 class="text-center font-bold"> Log In !</h1>
+            <h1 class="text-center font-bold"> Contact Me !</h1>
+
             @csrf
-            <label for="email" class="block text-sm font-medium text-gray-600">Email or username :</label>
+            <label for="email" class="block text-sm font-medium text-gray-600">Email :</label>
             <input type="text" name="email" required class="mt-1 p-2 w-full border rounded-md">
 
-            <label for="password" class="block text-sm font-medium text-gray-600">Password :</label>
-            <input type="password" name="password" required class="mt-1 p-2 w-full border rounded-md">
+            <label for="object" class="block text-sm font-medium text-gray-600">Objet :</label>
+            <input type="text" name="object" id="object" required class="mt-1 p-2 w-full border rounded-md">
 
-            <input type="submit" value="Log in" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
-            <p class="mt-4">No account ? <a href="{{route('register')}}" class="text-blue-500">Create an account</a></p>
+            <label for="message" class="block text-sm font-medium text-gray-600">Message :</label>
+            <textarea id="message" name="message" required class="mt-1 p-2 w-full border rounded-md"></textarea>
+
+
+            <input type="submit" value="Envoyer" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
 
             @if(session('error'))
                 <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-md">

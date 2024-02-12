@@ -23,7 +23,7 @@
             <nav class ="nav">
                 <ul class="flex space-x-4">
                     <li>
-                        <a href="/">Accueil</a>
+                        <a href="/">Welcome</a>
                     </li>                          
                     @if(session()->has('user'))
                     <li>
@@ -31,18 +31,18 @@
                     </li>
                     @else
                     <li>
-                        <a href="{{route('register')}}">Se connecter</a>
+                        <a href="{{route('register')}}">Create an account</a>
                     </li>
                     @endif
                     <li>
                         <a href="{{ route('docSwagger') }}">Documentation</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="{{ route('contact')}}">Contact</a>
                     </li>
                     @if(session()->has('user'))
                     <li>
-                        <a href="{{route('logout')}}">Déconnexion</a>
+                        <a href="{{route('logout')}}">Log out</a>
                     </li>
                     @endif
                 </ul>
