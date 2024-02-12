@@ -12,9 +12,13 @@
     <script type="module" src="{{asset('./js/app.js')}}" ></script>
     <header class="bg-blue-500 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="/" class="text-lg font-semibold">
-                <img class="w-14 h-14" src="{{ asset('images/genshin_pic.png') }}" alt="Logo genshin">
-            </a>
+            <div class="flex items-center">
+                <a href="/" class="text-lg font-semibold">
+                    <img class="w-14 h-14" src="{{ asset('images/genshin_pic.png') }}" alt="Logo genshin">
+                </a>
+                <h1 class="ml-5 font-bold text-2xl"> Genshin API </h1>
+            </div>
+            
             
             <nav class ="nav">
                 <ul class="flex space-x-4">

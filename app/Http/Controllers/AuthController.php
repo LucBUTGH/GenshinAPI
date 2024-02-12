@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\CharacterModel;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash; // Assurez-vous d'importer la classe Hash
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -12,13 +12,34 @@ class AuthController extends Controller
     function checkPassword(Request $request){
         return $request->input('password') ==$request->input('c_password');
     }
+
     
+
     function register(){
         return view('register');
     }
 
+    function emailExists(Request $request){
+        $user = User::where('us_mail', $request->input('email'))
+                ->orWhere('us_username', $request->input('email'))
+                ->first();
+        if($user){
+            return false;
+        }
+        return true;
+    }
+
     function insert(Request $request){
-        if($this->checkPassword($request)){
+        if(!$this->checkPassword($request))
+        {
+            return redirect()->route('register')->with('error', 'Les mots de passe ne correspondent pas.');
+        }
+        else if(!$this->emailExists($request))
+        {
+            return redirect()->route('register')->with('error', 'Cet email existe déjà.');
+        }
+        else
+        {
             $datas = $request->validate([
                 'username' => 'required',
                 'name' => 'required',
@@ -36,10 +57,7 @@ class AuthController extends Controller
             $user->save();
             session(['user' => $user]);
     
-            return $this->redirectHome();        
-
-        }else{
-            return redirect()->route('register')->with('mdp', 'Les mots de passe ne correspondent pas');
+            return $this->redirectHome();
         }
     }
 
