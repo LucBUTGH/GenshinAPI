@@ -32,23 +32,27 @@
         <h2 class="text-3xl md:text-4xl font-semibold mb-8">Explorez le Monde de Genshin</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="transition-transform transform hover:scale-110 object-cover p-6 bg-white rounded-lg shadow-md">
-                <h3 class="text-xl md:text-2xl font-semibold mb-4">Personnages</h3>
-                <p class="text-gray-700 mb-4">Explorez les détails de chaque personnage, y compris leurs compétences, statistiques de base et ascensions.</p>
-                <a href="{{ route('characters') }}" class="bg-genshin-500 text-white px-4 py-2 rounded-full inline-block hover:bg-genshin-700 transition duration-300">Voir les personnages</a>
-            </div>
+            <a href="{{ route('characters') }}" class="bg-genshin-500 px-4 py-2 rounded-full inline-block hover:bg-genshin-700 transition duration-300">
+                <div class="transition-transform transform hover:scale-110 object-cover p-6 bg-white rounded-lg shadow-md">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4">Personnages</h3>
+                    <p class="text-gray-700 mb-4">Explorez les détails de chaque personnage, y compris leurs compétences, statistiques de base et ascensions.</p>
+                </div>
+            </a>
 
-            <div class="transition-transform transform hover:scale-110 object-cover p-6 bg-white rounded-lg shadow-md">
-                <h3 class="text-xl md:text-2xl font-semibold mb-4">Armes</h3>
-                <p class="text-gray-700 mb-4">Explorez les caractéristiques de chaque arme, leurs statistiques et leurs bonus.</p>
-                <a href="#" class="bg-genshin-500 text-white px-4 py-2 rounded-full inline-block hover:bg-genshin-700 transition duration-300">Voir les armes</a>
-            </div>
+            <a href="{{ route('characters') }}" class="bg-genshin-500 px-4 py-2 rounded-full inline-block hover:bg-genshin-700 transition duration-300">
+                <div class="transition-transform transform hover:scale-110 object-cover p-6 bg-white rounded-lg shadow-md">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4">Armes</h3>
+                    <p class="text-gray-700 mb-4">Explorez les caractéristiques de chaque arme, leurs statistiques et leurs bonus.</p>
+                </div>
+            </a>
 
-            <div class="transition-transform transform hover:scale-110 object-cover p-6 bg-white rounded-lg shadow-md">
-                <h3 class="text-xl md:text-2xl font-semibold mb-4">Artéfacts</h3>
-                <p class="text-gray-700 mb-4">Découvrez les artéfacts disponibles dans le monde de Genshin Impact et leurs effets.</p>
-                <a href="#" class="bg-genshin-500 text-white px-4 py-2 rounded-full inline-block hover:bg-genshin-700 transition duration-300">Voir les artéfacts</a>
-            </div>
+            <a href="{{ route('characters') }}" class="bg-genshin-500 px-4 py-2 rounded-full inline-block hover:bg-genshin-700 transition duration-300">
+                <div class="transition-transform transform hover:scale-110 object-cover p-6 bg-white rounded-lg shadow-md">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4">Artéfacts</h3>
+                    <p class="text-gray-700 mb-4">Découvrez les artéfacts disponibles dans le monde de Genshin Impact et leurs effets.</p>
+                </div>
+            </a>
+            
         </div>
     </div>
 </section>

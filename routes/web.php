@@ -18,8 +18,6 @@ use App\Http\Controllers\CharactersController;
 |
 */
 
-
-
 Route::get('/', [HomeController::class, 'getAllCharacters'])->name('homepage');
 Route::get('/swagger',[SwaggerController::class,'index'])->name('docSwagger');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
